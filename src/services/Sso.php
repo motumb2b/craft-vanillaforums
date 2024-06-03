@@ -10,16 +10,14 @@
 
 namespace nystudio107\vanillaforums\services;
 
-use nystudio107\vanillaforums\models\Settings;
-use nystudio107\vanillaforums\Vanillaforums;
-use nystudio107\vanillaforums\events\SsoDataEvent;
-use nystudio107\vanillaforums\models\SsoData;
-
 use Craft;
 use craft\base\Component;
-use craft\web\Response;
-
+use nystudio107\vanillaforums\events\SsoDataEvent;
+use nystudio107\vanillaforums\models\Settings;
+use nystudio107\vanillaforums\models\SsoData;
+use nystudio107\vanillaforums\Vanillaforums;
 use Vanilla\JsConnect\JsConnect;
+use yii\base\ExitException;
 
 /** @noinspection MissingPropertyAnnotationsInspection */
 
@@ -60,7 +58,7 @@ class Sso extends Component
      *
      * @param int $userId
      *
-     * @throws \yii\base\ExitException
+     * @throws ExitException
      */
     public function output(string $jwt)
     {
@@ -74,8 +72,7 @@ class Sso extends Component
                 ->setUniqueID($ssoData->uniqueid)
                 ->setName($ssoData->name)
                 ->setEmail($ssoData->email)
-                ->setPhotoUrl($ssoData->photourl)
-            ;
+                ->setPhotoUrl($ssoData->photourl);
         } else {
             // They are not signed into Craft
             $jsConnect->setGuest(true);
@@ -105,8 +102,7 @@ class Sso extends Component
                 ->setUniqueID($ssoData->uniqueid)
                 ->setName($ssoData->name)
                 ->setEmail($ssoData->email)
-                ->setPhotoUrl($ssoData->photourl)
-            ;
+                ->setPhotoUrl($ssoData->photourl);
             // @TODO unclear how to return a string using the new library
             // https://github.com/vanilla/jsConnectPHP
         }
@@ -120,7 +116,7 @@ class Sso extends Component
     /**
      * Return an SSOData object filled in with the current user's info, or null
      *
-     * @param int $userId
+     * @param string $jwt
      *
      * @return SsoData|null
      */
