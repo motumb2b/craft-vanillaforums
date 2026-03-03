@@ -15,6 +15,7 @@ use nystudio107\vanillaforums\variables\VanillaforumsVariable;
 use nystudio107\vanillaforums\models\Settings;
 
 use Craft;
+use craft\base\Model;
 use craft\base\Plugin;
 use craft\web\twig\variables\CraftVariable;
 
@@ -91,7 +92,7 @@ class Vanillaforums extends Plugin
     /**
      * @inheritdoc
      */
-    protected function createSettingsModel()
+    protected function createSettingsModel(): ?Model
     {
         return new Settings();
     }
