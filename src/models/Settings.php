@@ -61,7 +61,7 @@ class Settings extends Model
     /**
      * @inheritdoc
      */
-    public function behaviors()
+    public function behaviors(): array
     {
         // Keep any parent behaviors
         $behaviors = parent::behaviors();
