@@ -27,7 +27,7 @@ class VanillaforumsAsset extends AssetBundle
     /**
      * @inheritdoc
      */
-    public function init()
+    public function init(): void
     {
         $this->sourcePath = "@nystudio107/vanillaforums/assetbundles/vanillaforums/dist";
 
