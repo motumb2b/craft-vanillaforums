@@ -58,7 +58,7 @@ class SsoData extends Model
     /**
      * @inheritdoc
      */
-    public function rules()
+    public function rules(): array
     {
         return [
             [['uniqueid'], 'integer'],
