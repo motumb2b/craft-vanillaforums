@@ -72,7 +72,8 @@ class Sso extends Component
                 ->setUniqueID($ssoData->uniqueid)
                 ->setName($ssoData->name)
                 ->setEmail($ssoData->email)
-                ->setPhotoUrl($ssoData->photourl);
+                ->setPhotoUrl($ssoData->photourl)
+                ->setRoles($ssoData->roles);
         } else {
             // They are not signed into Craft
             $jsConnect->setGuest(true);
